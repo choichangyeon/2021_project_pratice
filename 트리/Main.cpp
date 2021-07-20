@@ -24,16 +24,28 @@ int main(){
         if (cmd == "insert"){
             BST = insert(BST);
             std::cout << "++++++++++++++++\n";
-            for (int n = 0; n < size; n++)
-                std::cout << BST[n].val << " ";
+            for (int n = 0; n < size; n++){
+                if (!BST[n].fill)
+                    std::cout << "[ ] ";
+                else
+                    std::cout << BST[n].val << " ";
+            }
             std::cout << "\n++++++++++++++++\n";
             std::cout << "******************\n";
-            for (int n = 0; n < size; n++)
-                std::cout << BST[n].l_child << " ";
+            for (int n = 0; n < size; n++){
+                if (BST[n].l_child == -1)
+                    std::cout << "[ ] ";
+                else
+                    std::cout << BST[n].l_child << " ";
+            }
             std::cout << "\n******************\n";
             std::cout << "&&&&&&&&&&&&&&&&&&&&\n";
-            for (int n = 0; n < size; n++)
-                std::cout << BST[n].r_child << " ";
+            for (int n = 0; n < size; n++){
+                if (BST[n].r_child == -1)
+                    std::cout << "[ ] ";
+                else
+                    std::cout << BST[n].r_child << " ";
+            }
             std::cout << "\n&&&&&&&&&&&&&&&&&&&&\n";
             
         }
@@ -48,16 +60,28 @@ int main(){
             else
                 del(node, BST);
             std::cout << "++++++++++++++++\n";
-            for (int n = 0; n < size; n++)
-                std::cout << BST[n].val << " ";
+            for (int n = 0; n < size; n++){
+                if (!BST[n].fill)
+                    std::cout << "[ ] ";
+                else
+                    std::cout << BST[n].val << " ";
+            }
             std::cout << "\n++++++++++++++++\n";
             std::cout << "******************\n";
-            for (int n = 0; n < size; n++)
-                std::cout << BST[n].l_child << " ";
+            for (int n = 0; n < size; n++){
+                if (BST[n].l_child == -1)
+                    std::cout << "[ ] ";
+                else
+                    std::cout << BST[n].l_child << " ";
+            }
             std::cout << "\n******************\n";
             std::cout << "&&&&&&&&&&&&&&&&&&&&\n";
-            for (int n = 0; n < size; n++)
-                std::cout << BST[n].r_child << " ";
+            for (int n = 0; n < size; n++){
+                if (BST[n].r_child == -1)
+                    std::cout << "[ ] ";
+                else
+                    std::cout << BST[n].r_child << " ";
+            }
             std::cout << "\n&&&&&&&&&&&&&&&&&&&&\n";
         }
 
@@ -189,7 +213,7 @@ void del(int target, node *BST){ //실제 인덱스가 target임
         BST[target].set(temp, target + 1, 1); //오른쪽에서 가장 작은 값으로 설정
     }
     else{
-        BST[target].set(0, 0, 0); //자식이 없다면
+        BST[target].set(-1, 0, 0); //자식이 없다면
     }
 
     if (check == 0) //l_c
